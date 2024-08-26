@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "Telegram Bot",
   "main": "src/index.ts",
-  "author": "zbt (https://x.com/feelemptyz/status/1667101261819428865?t=JmJ8NoH4sIOMZiVobrzHqg&s=19)",
+  "author": "zbt (https://codegiggles.vercel.app/about)",
   "homepage": "https://github.com/sollidy/telegram-bot-vercel-boilerplate",
   "dependencies": {
     "@vercel/node": "^3.2.7",
