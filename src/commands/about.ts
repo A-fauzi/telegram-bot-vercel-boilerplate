@@ -22,6 +22,7 @@ Thank you for using *${name}*! Feel free to visit our [homepage](${homepage}) fo
   `;
 
   debug(`Triggered "about" command with message \n${message}`);
+  
   await ctx.replyWithMarkdownV2(message.trim(), { parse_mode: 'Markdown' });
 };
 
