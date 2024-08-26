@@ -38,12 +38,27 @@ const fetchFromGemini = async (text: string) => {
 
 // Fungsi untuk memformat pesan
 const formatMessage = (text: string): string => {
-  let formattedText = '<b>Hasil ✨</b>\n\n';
+  let formattedText = '<pre>result</pre>\n\n';
   const lines = text.split('\n');
+  let insideCodeBlock = false;
+  let codeBlock = '';
 
   lines.forEach(line => {
     line = line.trim();
-    if (line.startsWith('**') && line.endsWith('**')) {
+
+    if (line.startsWith('```')) {
+      // Toggle code block
+      insideCodeBlock = !insideCodeBlock;
+
+      if (!insideCodeBlock) {
+        // Closing code block
+        formattedText += `<pre>${codeBlock.trim()}</pre>\n`;
+        codeBlock = '';
+      }
+    } else if (insideCodeBlock) {
+      // Inside a code block
+      codeBlock += `${line}\n`;
+    } else if (line.startsWith('**') && line.endsWith('**')) {
       // Judul utama
       formattedText += `<b>${line.replace(/\*\*/g, '')}</b>\n`;
     } else if (line.startsWith('*')) {
@@ -60,6 +75,11 @@ const formatMessage = (text: string): string => {
       formattedText += `${line}\n`;
     }
   });
+
+  // Handle any unclosed code blocks
+  if (insideCodeBlock) {
+    formattedText += `<pre>${codeBlock.trim()}</pre>\n`;
+  }
 
   return formattedText.trim();
 };
