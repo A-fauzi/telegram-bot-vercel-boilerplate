@@ -14,9 +14,9 @@ ${description} - A powerful and easy-to-use Telegram Bot.
 🚀 *Features*:
 - Ai.
 
-👨‍💻 *Developed by*: [${author}](${homepage})
-
 Thank you for using *${name}*! Feel free to visit our [homepage](${homepage}) for more information.
+
+👨‍💻 *Developed by*: [${author}](t.me/jdoeflix)
   `;
 
   debug(`Triggered "about" command with message \n${message}`);
