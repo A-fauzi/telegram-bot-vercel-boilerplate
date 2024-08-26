@@ -12,9 +12,7 @@ const about = () => async (ctx: Context) => {
 ${description} - A powerful and easy-to-use Telegram Bot.
 
 🚀 *Features*:
-- Automated reminders.
-- Task management.
-- Customizable alerts.
+- Ai.
 
 👨‍💻 *Developed by*: [${author}](${homepage})
 

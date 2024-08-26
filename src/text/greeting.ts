@@ -27,18 +27,14 @@ const greeting = () => async (ctx: Context) => {
 I'm <b>TaskMaster</b>, your personal productivity assistant. Let's make your day more efficient!
 
 <b>🚀 Powerful Features:</b>
-📅 /reminder - Never miss an important event
-✅ /addtask - Keep your to-do list up-to-date
-📋 /listtasks - Overview of your tasks
-🔔 /setalert - Tailor notifications to your needs
+🤖 /ai - AI integration for smarter task management
 
 <b>💡 Pro Tips:</b>
-- Use #tags to categorize tasks
-- Set priority with !, !!, or !!!
-- Add due dates: DD/MM/YYYY
+- Use ai prompt : /ai {message}
+• example : /ai resep nasi goreng
 
 <b>🔗 Explore More:</b>
-Discover advanced features on our <a href="https://github.com/sollidy/telegram-bot-vercel-boilerplate">homepage</a>
+Discover advanced features on our <a href="https://github.com/A-fauzi">github</a>
 
 Ready to boost your productivity? Let's get started! 💪😊
      `
