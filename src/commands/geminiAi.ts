@@ -71,7 +71,7 @@ const geminiAi = () => async (ctx: Context) => {
     const inputText = ctx.message.text.split(' ').slice(1).join(' ') || '';
 
     if (!inputText) {
-      return await ctx.reply('Please provide the text after the command. Example: /generate Explain how AI works');
+      return await ctx.reply('Please provide the text after the command. Example: /ai Explain how AI works?');
     }
 
     debug(`Triggered "generate" command with input text: \n${inputText}`);
