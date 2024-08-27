@@ -1,6 +1,6 @@
+// Kode untuk file utama (misalnya index.ts)
 import { Telegraf } from 'telegraf';
-
-import { about, geminiAi} from './commands';
+import { about, geminiAi, clearContext } from './commands';
 import { greeting } from './text';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { development, production } from './core';
@@ -10,13 +10,15 @@ const ENVIRONMENT = process.env.NODE_ENV || '';
 
 const bot = new Telegraf(BOT_TOKEN);
 
-bot.command('about', about())
-bot.command('ai', geminiAi())
+bot.command('about', about());
+bot.command('ai', geminiAi());
+bot.command('clear', clearContext());
 bot.on('message', greeting());
 
-//prod mode (Vercel)
+// prod mode (Vercel)
 export const startVercel = async (req: VercelRequest, res: VercelResponse) => {
   await production(req, res, bot);
 };
-//dev mode
+
+// dev mode
 ENVIRONMENT !== 'production' && development(bot);
