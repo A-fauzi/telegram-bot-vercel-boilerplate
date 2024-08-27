@@ -1,7 +1,6 @@
-// Kode untuk file utama (misalnya index.ts)
 import { Telegraf } from 'telegraf';
 import { about, geminiAi, clearContext } from './commands';
-import { greeting } from './text';
+import { greeting, reportHandler } from './text';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { development, production } from './core';
 
@@ -9,11 +8,15 @@ const BOT_TOKEN = process.env.BOT_TOKEN || '';
 const ENVIRONMENT = process.env.NODE_ENV || '';
 
 const bot = new Telegraf(BOT_TOKEN);
+const adminId = '6738391173'; // Ganti dengan ID Telegram kamu
 
 bot.command('about', about());
 bot.command('ai', geminiAi());
 bot.command('clear', clearContext());
-bot.on('message', greeting());
+bot.on('message', (ctx) => {
+  greeting()(ctx);
+  reportHandler(bot, ctx, adminId); // Panggil sendReport setiap kali ada pesan
+});
 
 // prod mode (Vercel)
 export const startVercel = async (req: VercelRequest, res: VercelResponse) => {
@@ -21,4 +24,6 @@ export const startVercel = async (req: VercelRequest, res: VercelResponse) => {
 };
 
 // dev mode
-ENVIRONMENT !== 'production' && development(bot);
+if (ENVIRONMENT !== 'production') {
+  development(bot);
+}
