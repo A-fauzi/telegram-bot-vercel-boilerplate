@@ -103,7 +103,7 @@ const geminiAi = () => async (ctx: Context) => {
 
     debug(`Triggered "ai" command with input text: \n${inputText}`);
 
-    const geminiResponse = await fetchFromGemini(inputText, userId);
+    const geminiResponse = await fetchFromGemini(`${inputText} | Gunakan format yang menarik dengan emoticon yang sesuai untuk setiap daftar list`, userId);
 
     const message = (() => {
       if (geminiResponse.error) {
